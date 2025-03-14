@@ -12,9 +12,13 @@
 
 #include "resources.h"
 
-#pragma comment(lib, "comctl32.lib")
+//=============================================================================
+
+#define BUFFER_STR 1024
 
 //=============================================================================
+HINSTANCE hInst;
+
 HWND ctlGroupBoxValue;
 HWND ctlTextBoxValue;
 HWND ctlPushButtonConvert;
@@ -76,6 +80,7 @@ bool isDoubleScientificExp;
 
 //=============================================================================
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+std::string LoadStrFromResource(HINSTANCE hInstance, int strID);
 void CreateControls(const HWND& hwnd);
 void Calculate();
 void UpdateResults();

@@ -1,3 +1,89 @@
 #include "resources.h"
 
 IDI_APP_ICON ICON "icon.ico"
+
+STRINGTABLE 
+BEGIN
+	IDS_STR_EMPTY ""
+	IDS_STR_APP_NAME "IEEE 754 Converter"
+	IDS_STR_APP_HELP "Help - IEEE 754 Converter"
+	IDS_STR_APP_ABOUT "About - IEEE 754 Converter"
+
+	IDS_STR_GROUPBOX_VALUE "Value"
+	IDS_STR_LABEL_VALUE "Enter the floating-point number:"
+	IDS_STR_PUSHBUTTON_CONVERT "Convert"
+
+	IDS_STR_GROUPBOX_SINGLE "Single (32-bit)"
+	IDS_STR_LABEL_SINGLE_BINARY_SIGN "Sign"
+	IDS_STR_LABEL_SINGLE_BINARY_EXP "Exponent"
+	IDS_STR_LABEL_SINGLE_BINARY_MANTISSA "Mantissa"
+	IDS_STR_PUSHBUTTON_COPY_SINGLE_BINARY "Copy all"
+	IDS_STR_LABEL_SINGLE_HEX "Hexadecimal value:"
+	IDS_STR_PUSHBUTTON_COPY_SINGLE_HEX "Copy"
+	IDS_STR_LABEL_SINGLE_IEEE754 "Exact value (IEEE 754):"
+	IDS_STR_PUSHBUTTON_COPY_SINGLE_IEEE754 "Copy"
+	IDS_STR_CHECKBOX_EXP_SINGLE "Exponential form"
+
+	IDS_STR_GROUPBOX_DOUBLE "Double (64-bit)"
+	IDS_STR_LABEL_DOUBLE_BINARY_SIGN "Sign"
+	IDS_STR_LABEL_DOUBLE_BINARY_EXP "Exponent"
+	IDS_STR_LABEL_DOUBLE_BINARY_MANTISSA "Mantissa"
+	IDS_STR_PUSHBUTTON_COPY_DOUBLE_BINARY "Copy all"
+	IDS_STR_LABEL_DOUBLE_HEX "Hexadecimal value:"
+	IDS_STR_PUSHBUTTON_COPY_DOUBLE_HEX "Copy"
+	IDS_STR_LABEL_DOUBLE_IEEE754 "Exact value (IEEE 754):"
+	IDS_STR_PUSHBUTTON_COPY_DOUBLE_IEEE754 "Copy"
+	IDS_STR_CHECKBOX_EXP_DOUBLE "Exponential form"
+
+	IDS_STR_GROUPBOX_INFO "Info"
+	IDS_STR_PUSHBUTTON_HELP "Help"
+	IDS_STR_PUSHBUTTON_ABOUT "About"
+
+	IDS_STR_GROUPBOX_RESULTS "Results"
+	IDS_STR_PUSHBUTTON_COPY_RESULTS "Copy"
+	IDS_STR_PUSHBUTTON_SAVE_RESULTS "Save"
+	IDS_STR_RESULTS_COPY_OK "COPIED TO CLIPBOARD"
+	IDS_STR_RESULTS_COPY_FAIL "FAILED TO COPY"
+	IDS_STR_RESULTS_SAVE_OK "SAVED TO DIRECTORY"
+	IDS_STR_RESULTS_SAVE_FAIL "FAILED TO SAVE FILE"
+
+	IDS_STR_GROUPBOX_HISTORY "History"
+	IDS_STR_COMBOBOX_HISTORY ""	
+
+	IDS_STR_ERROR_REG_CLASS "Error while registering a class instance.\n"
+							"Application will be terminated."
+
+	IDS_STR_APP_HELP_TEXT 	"Use any kind of floating-point number notation as an initial value, including scientific (exponential) notation, for example:\n\n"
+							"3.1415\n"
+							"-20,3\n"
+							".631978E+9\n"
+							"+92,53e-13\n"
+							"7,E4\n\n"	
+							"In case of single- or double-precision floating-point numbers are insufficient to represent the specified value, the corresponding fields of the form will be left blank.\n\n"
+							"More useful information about the IEEE 754 standard can be found on the wiki:\n"
+							"https://en.wikipedia.org/wiki/IEEE_754\n\n"
+							"Dig deeper into converting floating-point numbers by visiting this website:\n"					"https://www.h-schmidt.net/FloatConverter/IEEE754.html\n"			
+
+	IDS_STR_APP_ABOUT_TEXT 	"IEEE 754 Converter 1.0 64-bit\n\n\n"
+							"Created by ap13ski\n"
+							"https://github.com/ap13ski\n"
+							"ap13ski@gmail.com\n\n"	
+							"Compiled with MinGW-W64 12.0.0 64-bit\n"
+							"https://www.mingw-w64.org\n\n"	
+							"Packed with UPX 4.2.4 64-bit\n"
+							"https://upx.github.io\n"
+/*
+	IDS_STR_APP_ABOUT_TEXT 	"IEEE 754 Converter 1.0 32-bit\n\n\n"
+							"Created by ap13ski\n"
+							"https://github.com/ap13ski\n"
+							"ap13ski@gmail.com\n\n"	
+							"Compiled with TDM-GCC 9.2.0 32-bit\n"
+							"https://jmeubank.github.io/tdm-gcc\n"
+							"https://sourceforge.net/projects/tdm-gcc\n\n"
+							"Packed with UPX 4.2.4 32-bit\n"
+							"https://upx.github.io\n"							
+*/
+
+	IDS_STR_CONVERTER_RESULTS_STATUS_OK "Value"
+	IDS_STR_CONVERTER_RESULTS_STATUS_FAIL "ERROR: INVALID VALUE"
+END

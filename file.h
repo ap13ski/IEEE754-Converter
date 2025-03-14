@@ -9,13 +9,15 @@
 
 namespace NS_FILE
 {
-	//===================================================
-	class File
-	{
-		public:
-		bool SaveToFile(const std::string& filename, const std::string& data);
-	};	
-	//===================================================
+//===================================================
+
+class File
+{
+	public:
+	bool SaveToFile(const std::string& filename, const std::string& data);
+};
+
+//===================================================
 }
 
 

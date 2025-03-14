@@ -11,13 +11,15 @@
 
 namespace NS_TIME
 {
-	//===================================================
-	class DateTime
-	{
-		public:
-		std::string GetCurrentDateTime(const std::string& format);		// "%Y-%m-%d %H:%M:%S"	
-	};	
-	//===================================================
+//===================================================
+
+class DateTime
+{
+	public:
+	std::string GetCurrentDateTime(const std::string& format);		// "%Y-%m-%d %H:%M:%S"	
+};
+
+//===================================================
 }
 
 
