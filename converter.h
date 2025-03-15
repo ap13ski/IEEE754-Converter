@@ -14,7 +14,7 @@
 
 namespace NS_IEEE754
 {
-//===================================================
+//=============================================================================
 
 enum PRECISION
 {
@@ -64,15 +64,15 @@ union DOUBLE_64
 	} bits;
 };
 
-//===================================================
+//=============================================================================
 class Converter
 {
 	public:
 	struct
 	{
 		std::string value;
-		bool status;			
-		
+		bool status;
+
 		std::string valueSingleBinarySign;
 		std::string valueSingleBinaryExponent;
 		std::string valueSingleBinaryMantissa;
@@ -82,7 +82,7 @@ class Converter
 		std::string valueSingleExactTrimmed;
 		std::string valueSingleScientific;
 		std::string valueSingleScientificTrimmed;
-		
+
 		std::string valueDoubleBinarySign;
 		std::string valueDoubleBinaryExponent;
 		std::string valueDoubleBinaryMantissa;
@@ -92,12 +92,11 @@ class Converter
 		std::string valueDoubleExactTrimmed;
 		std::string valueDoubleScientific;
 		std::string valueDoubleScientificTrimmed;
-		
-	} results;		
-	
+	} results;
+
 	private:
 	std::string TrimZeros(const std::string& str_input);
-	std::string TrimZerosScientific(const std::string& str_input);		
+	std::string TrimZerosScientific(const std::string& str_input);
 	std::string GetStringValueBinary(uint32_t value, FLOAT_BITS bits);
 	std::string GetStringValueBinary(uint64_t value, DOUBLE_BITS bits);
 	std::string GetStringUpper(const std::string& str_input);
@@ -129,7 +128,7 @@ class Converter
 	std::string GetStringResults(const std::string& str_info);
 };
 
-//===================================================
+//=============================================================================
 }
 
 

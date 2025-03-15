@@ -69,7 +69,7 @@ std::string CONVERTER_RESULTS_STATUS_FAIL = LoadStrFromResource(hInst, IDS_STR_C
 
 //=============================================================================
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-{	
+{
 	hInst = hInstance;
 	HWND hwnd;
 	MSG msg;
@@ -81,23 +81,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	wndmain.cbSize = sizeof(WNDCLASSEX);
 	wndmain.style = 0;
 	wndmain.lpfnWndProc = WndProc;
-    wndmain.cbClsExtra = 0;
-    wndmain.cbWndExtra = 0;
-    wndmain.hInstance = hInstance;
-    wndmain.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_APP_ICON));
-    wndmain.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wndmain.hbrBackground = GetSysColorBrush(COLOR_3DFACE);
-    wndmain.lpszMenuName = NULL;
-    wndmain.lpszClassName = STR_APP_NAME.c_str();
+	wndmain.cbClsExtra = 0;
+	wndmain.cbWndExtra = 0;
+	wndmain.hInstance = hInstance;
+	wndmain.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_APP_ICON));
+	wndmain.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wndmain.hbrBackground = GetSysColorBrush(COLOR_3DFACE);
+	wndmain.lpszMenuName = NULL;
+	wndmain.lpszClassName = STR_APP_NAME.c_str();
 	wndmain.hIconSm = NULL;
 
-    if (!RegisterClassEx(&wndmain))
+	if (!RegisterClassEx(&wndmain))
 	{
 		MessageBox(NULL, STR_ERROR_REG_CLASS.c_str(), STR_APP_NAME.c_str(), MB_ICONERROR);
 		return 0;
-    }
+	}
 
-	hwnd = CreateWindowEx(0, wndmain.lpszClassName, STR_APP_NAME.c_str(), WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 856, 756, 0, NULL, hInstance, NULL);	
+	hwnd = CreateWindowEx(0, wndmain.lpszClassName, STR_APP_NAME.c_str(), WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 856, 756, 0, NULL, hInstance, NULL);
 
 	while (GetMessage(&msg, NULL, 0, 0)) 
 	{
@@ -132,13 +132,13 @@ std::string LoadStrFromResource(HINSTANCE hInstance, int strID)
 	char buffer[BUFFER_STR];
 	LoadString(hInstance, strID, buffer, sizeof(buffer) / sizeof(char));
 	
-	std::string result = buffer;	
+	std::string result = buffer;
 	return result;
 }
 
 //=============================================================================
 void CreateControls(const HWND& hwnd)
-{	
+{
 	INITCOMMONCONTROLSEX initCtls;
 	InitCommonControlsEx(&initCtls);
 	
@@ -188,17 +188,17 @@ void CreateControls(const HWND& hwnd)
 
 	// GROUPBOX_VALUE
 	ctlGroupBoxValue = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_GROUPBOX_VALUE.c_str(), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 10, 10, 830, 95, hwnd, (HMENU)IDC_GROUPBOX_VALUE, NULL, NULL);	
-	ctlLabelValue = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_VALUE.c_str(), WS_CHILD | WS_VISIBLE, 20, 40, 340, 30, hwnd, (HMENU)IDC_LABEL_VALUE,	0, NULL);	
+	ctlLabelValue = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_VALUE.c_str(), WS_CHILD | WS_VISIBLE, 20, 40, 340, 30, hwnd, (HMENU)IDC_LABEL_VALUE,	0, NULL);
 	ctlTextBoxValue = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 20, 65, 680, 30, hwnd, (HMENU)IDC_TEXTBOX_VALUE, NULL, NULL);
 	ctlPushButtonConvert = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_CONVERT.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 710, 65, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_CONVERT, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
 
-	// GROUPBOX_SINGLE	
+	// GROUPBOX_SINGLE
 	ctlGroupBoxSingle = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_GROUPBOX_SINGLE.c_str(), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 10, 115, 830, 250, hwnd, (HMENU)IDC_GROUPBOX_SINGLE, NULL, NULL);	
 	ctlLabelSingleBinarySign = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_SINGLE_BINARY_SIGN.c_str(), WS_CHILD | WS_VISIBLE, 20, 145, 100, 30, hwnd, (HMENU)IDC_LABEL_SINGLE_BINARY_SIGN,	0, NULL);
 	ctlLabelSingleBinaryExp = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_SINGLE_BINARY_EXP.c_str(), WS_CHILD | WS_VISIBLE, 75, 145, 100, 30, hwnd, (HMENU)IDC_LABEL_SINGLE_BINARY_EXP,	0, NULL);
 	ctlLabelSingleBinaryMantissa = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_SINGLE_BINARY_MANTISSA.c_str(), WS_CHILD | WS_VISIBLE, 200, 145, 100, 30, hwnd, (HMENU)IDC_LABEL_SINGLE_BINARY_MANTISSA,	0, NULL);
 	ctlTextBoxSingleBinarySign = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 20, 170, 55, 30, hwnd, (HMENU)IDC_TEXTBOX_SINGLE_BINARY_SIGN, NULL, NULL);
-	ctlTextBoxSingleBinaryExp = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 75, 170, 125, 30, hwnd, (HMENU)IDC_TEXTBOX_SINGLE_BINARY_EXP, NULL, NULL);	
+	ctlTextBoxSingleBinaryExp = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 75, 170, 125, 30, hwnd, (HMENU)IDC_TEXTBOX_SINGLE_BINARY_EXP, NULL, NULL);
 	ctlTextBoxSingleBinaryMantissa = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 200, 170, 500, 30, hwnd, (HMENU)IDC_TEXTBOX_SINGLE_BINARY_MANTISSA, NULL, NULL);
 	ctlPushButtonCopySingleBinary = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_COPY_SINGLE_BINARY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 710, 170, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_COPY_SINGLE_BINARY, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
 	// HEX
@@ -213,15 +213,15 @@ void CreateControls(const HWND& hwnd)
 
 	// GROUPBOX_DOUBLE
 	ctlGroupBoxDouble = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_GROUPBOX_DOUBLE.c_str(), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 10, 375, 830, 250, hwnd, (HMENU)IDC_GROUPBOX_DOUBLE, NULL, NULL);	
-	ctlLabelDoubleBinarySign = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_BINARY_SIGN.c_str(), WS_CHILD | WS_VISIBLE, 20, 405, 100, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_BINARY_SIGN,	0, NULL);
-	ctlLabelDoubleBinaryExp = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_BINARY_EXP.c_str(), WS_CHILD | WS_VISIBLE, 75, 405, 100, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_BINARY_EXP,	0, NULL);
-	ctlLabelDoubleBinaryMantissa = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_BINARY_MANTISSA.c_str(), WS_CHILD | WS_VISIBLE, 200, 405, 100, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_BINARY_MANTISSA,	0, NULL);
+	ctlLabelDoubleBinarySign = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_BINARY_SIGN.c_str(), WS_CHILD | WS_VISIBLE, 20, 405, 100, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_BINARY_SIGN, 0, NULL);
+	ctlLabelDoubleBinaryExp = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_BINARY_EXP.c_str(), WS_CHILD | WS_VISIBLE, 75, 405, 100, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_BINARY_EXP, 0, NULL);
+	ctlLabelDoubleBinaryMantissa = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_BINARY_MANTISSA.c_str(), WS_CHILD | WS_VISIBLE, 200, 405, 100, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_BINARY_MANTISSA, 0, NULL);
 	ctlTextBoxDoubleBinarySign = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 20, 430, 55, 30, hwnd, (HMENU)IDC_TEXTBOX_DOUBLE_BINARY_SIGN, NULL, NULL);
-	ctlTextBoxDoubleBinaryExp = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 75, 430, 125, 30, hwnd, (HMENU)IDC_TEXTBOX_DOUBLE_BINARY_EXP, NULL, NULL);	
+	ctlTextBoxDoubleBinaryExp = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 75, 430, 125, 30, hwnd, (HMENU)IDC_TEXTBOX_DOUBLE_BINARY_EXP, NULL, NULL);
 	ctlTextBoxDoubleBinaryMantissa = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 200, 430, 500, 30, hwnd, (HMENU)IDC_TEXTBOX_DOUBLE_BINARY_MANTISSA, NULL, NULL);
 	ctlPushButtonCopyDoubleBinary = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_COPY_DOUBLE_BINARY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 710, 430, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_COPY_DOUBLE_BINARY, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
 	// HEX
-	ctlLabelDoubleHex = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_HEX.c_str(), WS_CHILD | WS_VISIBLE, 20, 470, 350, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_HEX,	0, NULL);
+	ctlLabelDoubleHex = CreateWindowEx(0, TEXT_CLASS_LABEL, STR_LABEL_DOUBLE_HEX.c_str(), WS_CHILD | WS_VISIBLE, 20, 470, 350, 30, hwnd, (HMENU)IDC_LABEL_DOUBLE_HEX, 0, NULL);
 	ctlTextBoxDoubleHex = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_LEFT, TEXT_CLASS_EDIT, STR_EMPTY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 20, 495, 680, 30, hwnd, (HMENU)IDC_TEXTBOX_DOUBLE_HEX, NULL, NULL);
 	ctlPushButtonCopyDoubleHex = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_COPY_DOUBLE_HEX.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 710, 495, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_COPY_DOUBLE_HEX, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
 	// IEEE754
@@ -233,36 +233,36 @@ void CreateControls(const HWND& hwnd)
 	// GROUPBOX_INFO
 	ctlGroupBoxInfo = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_GROUPBOX_INFO.c_str(), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 10, 635, 270, 70, hwnd, (HMENU)IDC_GROUPBOX_INFO, NULL, NULL);
 	ctlPushButtonHelp = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_HELP.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 20, 665, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_HELP, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
-	ctlPushButtonAbout = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_ABOUT.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 150, 665, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_ABOUT, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);	
+	ctlPushButtonAbout = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_ABOUT.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 150, 665, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_ABOUT, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
 
 	// GROUPBOX_HISTORY
 	ctlGroupBoxHistory = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_GROUPBOX_HISTORY.c_str(), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 290, 635, 270, 70, hwnd, (HMENU)IDC_GROUPBOX_HISTORY, NULL, NULL);
-	ctlComboBoxHistory = CreateWindowEx(0, TEXT_CLASS_COMBOBOX,	STR_COMBOBOX_HISTORY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | CBS_DROPDOWNLIST | WS_VSCROLL, 300, 665, 250, 600, hwnd, (HMENU)IDC_COMBOBOX_HISTORY, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);	
+	ctlComboBoxHistory = CreateWindowEx(0, TEXT_CLASS_COMBOBOX,	STR_COMBOBOX_HISTORY.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | CBS_DROPDOWNLIST | WS_VSCROLL, 300, 665, 250, 600, hwnd, (HMENU)IDC_COMBOBOX_HISTORY, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
 	SendMessage(ctlComboBoxHistory, CB_SETITEMDATA, 0, 0);
-	
+
 	// GROUPBOX_RESULTS
 	ctlGroupBoxResults = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_GROUPBOX_RESULTS.c_str(), WS_CHILD | WS_VISIBLE | BS_GROUPBOX, 570, 635, 270, 70, hwnd, (HMENU)IDC_GROUPBOX_RESULTS, NULL, NULL);
-	ctlPushButtonCopyResults = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_COPY_RESULTS.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 580, 665, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_COPY_RESULTS, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);	
-	ctlPushButtonSaveResults = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_SAVE_RESULTS.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 710, 665, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_SAVE_RESULTS, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);	
-	
+	ctlPushButtonCopyResults = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_COPY_RESULTS.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 580, 665, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_COPY_RESULTS, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
+	ctlPushButtonSaveResults = CreateWindowEx(0, TEXT_CLASS_BUTTON, STR_PUSHBUTTON_SAVE_RESULTS.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 710, 665, 120, 30, hwnd, (HMENU)IDC_PUSHBUTTON_SAVE_RESULTS, (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE), NULL);
+
 	CreateFontCustom(hFontNormal, FW_NORMAL);
 	CreateFontCustom(hFontBold, FW_BOLD);
-	
+
 	UpdateFonts();	
-	
-	SetFocus(ctlTextBoxValue);	
+
+	SetFocus(ctlTextBoxValue);
 }
 
-//===================================================
+//=============================================================================
 void InitState()
 {
 	isSingleScientificExp = false;
 	isDoubleScientificExp = false;
 }
 
-//===================================================
+//=============================================================================
 void UpdateFonts()
-{	
+{
 	UpdateFont(ctlGroupBoxValue, hFontBold);
 	UpdateFont(ctlTextBoxValue, hFontNormal);
 	UpdateFont(ctlPushButtonConvert, hFontBold);
@@ -309,83 +309,83 @@ void UpdateFonts()
 	UpdateFont(ctlPushButtonAbout, hFontNormal);
 
 	UpdateFont(ctlGroupBoxHistory, hFontBold);
-	UpdateFont(ctlComboBoxHistory, hFontNormal);	
+	UpdateFont(ctlComboBoxHistory, hFontNormal);
 }
 
-//===================================================
+//=============================================================================
 void UpdateFont(HWND& hControl, HFONT& hFont)
 {
-	SendMessage(hControl, WM_SETFONT, (WPARAM)hFont, TRUE);	
+	SendMessage(hControl, WM_SETFONT, (WPARAM)hFont, TRUE);
 }
 
-//===================================================
+//=============================================================================
 void CreateFontCustom(HFONT& hFontCustom, int fnWeight)
 {
 	hFontCustom = CreateFont
 	(
-		0, 							// int nHeight               // height of font
-		0, 							// int nWidth                // average character width
-		0, 							// int nEscapement           // angle of escapement
-		0, 							// int nOrientation          // base-line orientation angle
-		fnWeight, 					// int fnWeight              // font weight
-		FALSE, 						// DWORD fdwItalic           // italic attribute option
-		FALSE, 						// DWORD fdwUnderline        // underline attribute option
-		FALSE, 						// DWORD fdwStrikeOut        // strikeout attribute option
-		DEFAULT_CHARSET, 			// DWORD fdwCharSet          // character set identifier
-		OUT_DEFAULT_PRECIS, 		// DWORD fdwOutputPrecision  // output precision
-		CLIP_DEFAULT_PRECIS, 		// DWORD fdwClipPrecision    // clipping precision
-		DEFAULT_QUALITY, 			// DWORD fdwQuality          // output quality
-		DEFAULT_PITCH | FF_SWISS, 	// DWORD fdwPitchAndFamily   // pitch and family
-		FONT_NORMAL			 		// LPCTSTR lpszFace          // typeface name
+		0,							// int nHeight				// height of font
+		0,							// int nWidth				// average character width
+		0,							// int nEscapement			// angle of escapement
+		0,							// int nOrientation			// base-line orientation angle
+		fnWeight,					// int fnWeight				// font weight
+		FALSE,						// DWORD fdwItalic			// italic attribute option
+		FALSE,						// DWORD fdwUnderline		// underline attribute option
+		FALSE,						// DWORD fdwStrikeOut		// strikeout attribute option
+		DEFAULT_CHARSET,			// DWORD fdwCharSet			// character set identifier
+		OUT_DEFAULT_PRECIS,			// DWORD fdwOutputPrecision	// output precision
+		CLIP_DEFAULT_PRECIS,		// DWORD fdwClipPrecision	// clipping precision
+		DEFAULT_QUALITY,			// DWORD fdwQuality			// output quality
+		DEFAULT_PITCH | FF_SWISS,	// DWORD fdwPitchAndFamily	// pitch and family
+		FONT_NORMAL					// LPCTSTR lpszFace			// typeface name
 	);
 }
 
-//===================================================
+//=============================================================================
 std::string GetEditText(const HWND& hEdit)
 {
-    int length = GetWindowTextLength(hEdit);
-    if (length <= 0) { return ""; }
+	int length = GetWindowTextLength(hEdit);
+	if (length <= 0) { return ""; }
 
-    std::string text(length, '\0');
-    GetWindowText(hEdit, &text[0], length + 1);
+	std::string text(length, '\0');
+	GetWindowText(hEdit, &text[0], length + 1);
 
-    return text;
+	return text;
 }
 
-//===================================================
+//=============================================================================
 void Calculate()
 {
 	converter.CalculateResults(GetEditText(ctlTextBoxValue));
 }
 
-//===================================================
+//=============================================================================
 void UpdateResults()
 {
 	SetWindowText(ctlTextBoxValue, converter.results.value.c_str());
-	
+
 	SetWindowText(ctlTextBoxSingleBinarySign, converter.results.valueSingleBinarySign.c_str());
 	SetWindowText(ctlTextBoxSingleBinaryExp, converter.results.valueSingleBinaryExponent.c_str());
 	SetWindowText(ctlTextBoxSingleBinaryMantissa, converter.results.valueSingleBinaryMantissa.c_str());
 	SetWindowText(ctlTextBoxSingleHex, converter.results.valueSingleHex.c_str());
 	UpdateTextboxSingleIEEE754();
-	
+
 	SetWindowText(ctlTextBoxDoubleBinarySign, converter.results.valueDoubleBinarySign.c_str());
 	SetWindowText(ctlTextBoxDoubleBinaryExp, converter.results.valueDoubleBinaryExponent.c_str());
 	SetWindowText(ctlTextBoxDoubleBinaryMantissa, converter.results.valueDoubleBinaryMantissa.c_str());
 	SetWindowText(ctlTextBoxDoubleHex, converter.results.valueDoubleHex.c_str());
-	UpdateTextboxDoubleIEEE754();	
-	
+	UpdateTextboxDoubleIEEE754();
+
 	if (converter.results.status == true)
 		{ SetWindowText(ctlGroupBoxValue, CONVERTER_RESULTS_STATUS_OK.c_str()); }
 	else
-		{ SetWindowText(ctlGroupBoxValue, CONVERTER_RESULTS_STATUS_FAIL.c_str()); }		
+		{ SetWindowText(ctlGroupBoxValue, CONVERTER_RESULTS_STATUS_FAIL.c_str()); }
 
 	SetWindowText(ctlGroupBoxResults, STR_GROUPBOX_RESULTS.c_str());
-	
+
 	ComboBoxHistoryEntryAdd(converter.results.value.c_str());
 }
 
-//===================================================
+//=============================================================================
 void UpdateTextboxSingleIEEE754()
 {
 	if (isSingleScientificExp == true)
@@ -394,11 +394,11 @@ void UpdateTextboxSingleIEEE754()
 	}
 	else
 	{
-		SetWindowText(ctlTextBoxSingleIEEE754, converter.results.valueSingleExactTrimmed.c_str());	
+		SetWindowText(ctlTextBoxSingleIEEE754, converter.results.valueSingleExactTrimmed.c_str());
 	}
 }
 
-//===================================================
+//=============================================================================
 void UpdateTextboxDoubleIEEE754()
 {
 	if (isDoubleScientificExp == true)
@@ -407,17 +407,17 @@ void UpdateTextboxDoubleIEEE754()
 	}
 	else
 	{
-		SetWindowText(ctlTextBoxDoubleIEEE754, converter.results.valueDoubleExactTrimmed.c_str());	
+		SetWindowText(ctlTextBoxDoubleIEEE754, converter.results.valueDoubleExactTrimmed.c_str());
 	}
 }
 
-//===================================================
+//=============================================================================
 bool GetCheckboxState(const HWND& hwnd, int buttonID)
 {
 	return (IsDlgButtonChecked(hwnd, buttonID) == BST_CHECKED);
 }
 
-//===================================================
+//=============================================================================
 bool ClipboardCopy(const std::string& str)
 {
 	if (clipboard.SetData(str))
@@ -426,43 +426,43 @@ bool ClipboardCopy(const std::string& str)
 		{ return false; }
 }
 
-//===================================================
+//=============================================================================
 void ClipboardCopySingleBinaryTotal()
 {
-	ClipboardCopy(GetEditText(ctlTextBoxSingleBinarySign) + GetEditText(ctlTextBoxSingleBinaryExp) + GetEditText(ctlTextBoxSingleBinaryMantissa));	
+	ClipboardCopy(GetEditText(ctlTextBoxSingleBinarySign) + GetEditText(ctlTextBoxSingleBinaryExp) + GetEditText(ctlTextBoxSingleBinaryMantissa));
 }
 
-//===================================================
+//=============================================================================
 void ClipboardCopySingleHex()
 {
-	ClipboardCopy(GetEditText(ctlTextBoxSingleHex));	
+	ClipboardCopy(GetEditText(ctlTextBoxSingleHex));
 }
 
-//===================================================
+//=============================================================================
 void ClipboardCopySingleIEEE754()
 {
-	ClipboardCopy(GetEditText(ctlTextBoxSingleIEEE754));	
+	ClipboardCopy(GetEditText(ctlTextBoxSingleIEEE754));
 }
 
-//===================================================
+//=============================================================================
 void ClipboardCopyDoubleBinaryTotal()
 {
-	ClipboardCopy(GetEditText(ctlTextBoxDoubleBinarySign) + GetEditText(ctlTextBoxDoubleBinaryExp) + GetEditText(ctlTextBoxDoubleBinaryMantissa));	
+	ClipboardCopy(GetEditText(ctlTextBoxDoubleBinarySign) + GetEditText(ctlTextBoxDoubleBinaryExp) + GetEditText(ctlTextBoxDoubleBinaryMantissa));
 }
 
-//===================================================
+//=============================================================================
 void ClipboardCopyDoubleHex()
 {
-	ClipboardCopy(GetEditText(ctlTextBoxDoubleHex));	
+	ClipboardCopy(GetEditText(ctlTextBoxDoubleHex));
 }
 
-//===================================================
+//=============================================================================
 void ClipboardCopyDoubleIEEE754()
 {
-	ClipboardCopy(GetEditText(ctlTextBoxDoubleIEEE754));	
+	ClipboardCopy(GetEditText(ctlTextBoxDoubleIEEE754));
 }
 
-//===================================================
+//=============================================================================
 void ClipboardCopyResults()
 {
 	std::string format = "%Y-%m-%d %H:%M:%S";
@@ -473,65 +473,66 @@ void ClipboardCopyResults()
 		{ SetWindowText(ctlGroupBoxResults, STR_RESULTS_COPY_FAIL.c_str()); }
 }
 
-//===================================================
+//=============================================================================
 void FileSaveResults()
 {
 	std::string format;
 	std::string date;
 	std::string filename;
-	
+
 	format = "%Y-%m-%d_%H-%M-%S";
 	date = datetime.GetCurrentDateTime(format);
 	filename += date + "__" + converter.results.value + ".txt";
-	
+
 	format = "%Y-%m-%d %H:%M:%S";
 	date = datetime.GetCurrentDateTime(format);
 	std::string results = converter.GetStringResults(date);
-	std::replace(results.begin(), results.end(), '\r', ' ');	
-	
+	std::replace(results.begin(), results.end(), '\r', ' ');
+
 	if (file.SaveToFile(filename, results))
 		{ SetWindowText(ctlGroupBoxResults, STR_RESULTS_SAVE_OK.c_str()); }
 	else
 		{ SetWindowText(ctlGroupBoxResults, STR_RESULTS_SAVE_FAIL.c_str()); }
 }
 
-//===================================================
+//=============================================================================
 void ShowInfo()
 {
-	MessageBox(NULL, STR_APP_ABOUT_TEXT.c_str(), STR_APP_ABOUT.c_str(), MB_OK | MB_ICONINFORMATION);	
+	MessageBox(NULL, STR_APP_ABOUT_TEXT.c_str(), STR_APP_ABOUT.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
-//===================================================
+//=============================================================================
 void ShowHelp()
 {
 	MessageBox(NULL, STR_APP_HELP_TEXT.c_str(), STR_APP_HELP.c_str(), MB_OK | MB_ICONQUESTION);	
 }
 
-//===================================================
+//=============================================================================
 void ComboBoxHistoryEntryAdd(const char* entry)
 {
-    SendMessage(ctlComboBoxHistory, CB_ADDSTRING, 0, (LPARAM)entry);
+	SendMessage(ctlComboBoxHistory, CB_ADDSTRING, 0, (LPARAM)entry);
 }
 
 void ComboBoxHistoryEntryRemove(int index)
 {
-    SendMessage(ctlComboBoxHistory, CB_DELETESTRING, index, 0);
+	SendMessage(ctlComboBoxHistory, CB_DELETESTRING, index, 0);
 }
 
+//=============================================================================
 void ComboBoxHistoryEntrySelect()
 {
 	int index = SendMessage(ctlComboBoxHistory, CB_GETCURSEL, 0, 0);
 	if (index == CB_ERR)
 		{ return; }	
-	
+
 	char buffer[BUFFER_STR];
-    SendMessage(ctlComboBoxHistory, CB_GETLBTEXT, index, (LPARAM)buffer);
-	
+	SendMessage(ctlComboBoxHistory, CB_GETLBTEXT, index, (LPARAM)buffer);
+
 	ComboBoxHistoryEntryRemove(index);
 	SetWindowText(ctlTextBoxValue, buffer);
-	
+
 	Calculate();
-	UpdateResults();	
+	UpdateResults();
 }
 
 //=============================================================================
@@ -544,75 +545,75 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			InitState();
 			SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_MAXIMIZEBOX);
 			break;
-			
-		case WM_COMMAND:		
+
+		case WM_COMMAND:
 			if (HIWORD(wParam) == BN_CLICKED)
 			{
 				switch (LOWORD(wParam))
-				{					
+				{
 					case IDC_PUSHBUTTON_CONVERT:
 						Calculate();
 						UpdateResults();
 						break;
-						
+
 					case IDC_PUSHBUTTON_COPY_SINGLE_BINARY:
 						ClipboardCopySingleBinaryTotal();
 						break;
-						
+
 					case IDC_PUSHBUTTON_COPY_SINGLE_HEX:
 						ClipboardCopySingleHex();
 						break;
-						
+
 					case IDC_PUSHBUTTON_COPY_SINGLE_IEEE754:
 						ClipboardCopySingleIEEE754();
 						break;
-						
+
 					case IDC_PUSHBUTTON_COPY_DOUBLE_BINARY:
 						ClipboardCopyDoubleBinaryTotal();
 						break;
-						
+
 					case IDC_PUSHBUTTON_COPY_DOUBLE_HEX:
 						ClipboardCopyDoubleHex();
 						break;
-						
+
 					case IDC_PUSHBUTTON_COPY_DOUBLE_IEEE754:
 						ClipboardCopyDoubleIEEE754();
-						break;						
-						
+						break;
+
 					case IDC_CHECKBOX_EXP_SINGLE:
 						isSingleScientificExp = GetCheckboxState(hwnd, IDC_CHECKBOX_EXP_SINGLE);
-						UpdateTextboxSingleIEEE754();						
+						UpdateTextboxSingleIEEE754();
 						break;
-						
+
 					case IDC_CHECKBOX_EXP_DOUBLE:
 						isDoubleScientificExp = GetCheckboxState(hwnd, IDC_CHECKBOX_EXP_DOUBLE);
-						UpdateTextboxDoubleIEEE754();						
+						UpdateTextboxDoubleIEEE754();
 						break;
-						
+
 					case IDC_PUSHBUTTON_HELP:
 						ShowHelp();
 						break;	
-						
+
 					case IDC_PUSHBUTTON_ABOUT:
 						ShowInfo();
 						break;	
-						
+
 					case IDC_PUSHBUTTON_COPY_RESULTS:
 						ClipboardCopyResults();
 						break;
-						
+
 					case IDC_PUSHBUTTON_SAVE_RESULTS:
 						FileSaveResults();
-						break;						
+						break;
 				}
 			}
-			
+
 			if (HIWORD(wParam) == CBN_SELCHANGE)
 			{
-				ComboBoxHistoryEntrySelect();	
+				ComboBoxHistoryEntrySelect();
 			}
 			break;
-			
+
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			break; 

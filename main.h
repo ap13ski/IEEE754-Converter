@@ -5,6 +5,7 @@
 
 #include <windows.h>
 #include <commctrl.h>
+#include <string>
 #include "converter.h"
 #include "clipboard.h"
 #include "time.h"

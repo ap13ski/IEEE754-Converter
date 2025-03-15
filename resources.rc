@@ -48,7 +48,7 @@ BEGIN
 	IDS_STR_RESULTS_SAVE_FAIL "FAILED TO SAVE FILE"
 
 	IDS_STR_GROUPBOX_HISTORY "History"
-	IDS_STR_COMBOBOX_HISTORY ""	
+	IDS_STR_COMBOBOX_HISTORY ""
 
 	IDS_STR_ERROR_REG_CLASS "Error while registering a class instance.\n"
 							"Application will be terminated."
@@ -62,7 +62,8 @@ BEGIN
 							"In case of single- or double-precision floating-point numbers are insufficient to represent the specified value, the corresponding fields of the form will be left blank.\n\n"
 							"More useful information about the IEEE 754 standard can be found on the wiki:\n"
 							"https://en.wikipedia.org/wiki/IEEE_754\n\n"
-							"Dig deeper into converting floating-point numbers by visiting this website:\n"					"https://www.h-schmidt.net/FloatConverter/IEEE754.html\n"			
+							"Dig deeper into converting floating-point numbers by visiting this website:\n"
+							"https://www.h-schmidt.net/FloatConverter/IEEE754.html\n"
 
 	IDS_STR_APP_ABOUT_TEXT 	"IEEE 754 Converter 1.0 64-bit\n\n\n"
 							"Created by ap13ski\n"
@@ -81,7 +82,7 @@ BEGIN
 							"https://jmeubank.github.io/tdm-gcc\n"
 							"https://sourceforge.net/projects/tdm-gcc\n\n"
 							"Packed with UPX 4.2.4 32-bit\n"
-							"https://upx.github.io\n"							
+							"https://upx.github.io\n"
 */
 
 	IDS_STR_CONVERTER_RESULTS_STATUS_OK "Value"

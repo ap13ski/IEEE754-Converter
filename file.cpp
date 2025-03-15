@@ -2,7 +2,7 @@
 
 namespace NS_FILE
 {
-//===================================================
+//=============================================================================
 
 bool File::SaveToFile(const std::string& filename, const std::string& str_input)
 {
@@ -12,11 +12,11 @@ bool File::SaveToFile(const std::string& filename, const std::string& str_input)
 		return false;
 	}
 
-	file_output << str_input;		
+	file_output << str_input;
 	file_output.close();
 
 	return true;
 }
 
-//===================================================
+//=============================================================================
 }

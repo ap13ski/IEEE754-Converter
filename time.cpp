@@ -1,8 +1,8 @@
 #include "time.h"
 
 namespace NS_TIME
-{	
-//===================================================
+{
+//=============================================================================
 
 std::string DateTime::GetCurrentDateTime(const std::string& format)
 {
@@ -12,8 +12,8 @@ std::string DateTime::GetCurrentDateTime(const std::string& format)
 	std::ostringstream oss;
 	oss << std::put_time(std::localtime(&now_c), format.c_str());
 	return oss.str();
-}	
+}
 
-//===================================================
+//=============================================================================
 }
 
