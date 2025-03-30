@@ -323,7 +323,7 @@ void CreateFontCustom(HFONT& hFontCustom, int fnWeight)
 {
 	hFontCustom = CreateFont
 	(
-		0,							// int nHeight				// height of font
+		DEFAULT_FONTSIZE,			// int nHeight				// height of font
 		0,							// int nWidth				// average character width
 		0,							// int nEscapement			// angle of escapement
 		0,							// int nOrientation			// base-line orientation angle
