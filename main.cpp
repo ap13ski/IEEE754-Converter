@@ -101,10 +101,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	while (GetMessage(&msg, NULL, 0, 0)) 
 	{
-		// TAB and SHIFT+TAB handler
-		//==========================
+		// ENTER, TAB and SHIFT+TAB handler
+		//=================================
 		if (msg.message == WM_KEYDOWN || msg.message == WM_SYSKEYDOWN)
 		{
+			if (msg.wParam == VK_RETURN)
+			{
+				if (GetFocus() == ctlTextBoxValue)
+				{
+					SendMessage(ctlPushButtonConvert, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(5, 5));
+					Sleep(100);
+					SendMessage(ctlPushButtonConvert, WM_LBUTTONUP, 0, MAKELPARAM(5, 5));
+					SetFocus(ctlTextBoxValue);
+				}
+				continue;
+			}
+
 			if (msg.wParam == VK_TAB)
 			{
 				BOOL isDirBackward = GetAsyncKeyState(VK_SHIFT) & 0x8000;
@@ -117,7 +129,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				}
 			}			
 		}
-		//==========================
+		//=================================
 		
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
@@ -353,9 +365,17 @@ std::string GetEditText(const HWND& hEdit)
 }
 
 //=============================================================================
-void Calculate()
-{
-	converter.CalculateResults(GetEditText(ctlTextBoxValue));
+bool Calculate()
+{	
+	std::string newValue = GetEditText(ctlTextBoxValue);
+	std::string lastValue = converter.results.value;
+	if (newValue == lastValue)
+	{
+		return false;
+	}
+	
+	converter.CalculateResults(newValue);
+	return true;
 }
 
 //=============================================================================
@@ -531,8 +551,16 @@ void ComboBoxHistoryEntrySelect()
 	ComboBoxHistoryEntryRemove(index);
 	SetWindowText(ctlTextBoxValue, buffer);
 
-	Calculate();
-	UpdateResults();
+	GetResults();
+}
+//=============================================================================
+
+void GetResults()
+{
+	if (Calculate() == true)
+	{
+		UpdateResults();		
+	}
 }
 
 //=============================================================================
@@ -552,8 +580,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				switch (LOWORD(wParam))
 				{
 					case IDC_PUSHBUTTON_CONVERT:
-						Calculate();
-						UpdateResults();
+						GetResults();
 						break;
 
 					case IDC_PUSHBUTTON_COPY_SINGLE_BINARY:

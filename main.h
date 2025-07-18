@@ -84,8 +84,9 @@ bool isDoubleScientificExp;
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 std::string LoadStrFromResource(HINSTANCE hInstance, int strID);
 void CreateControls(const HWND& hwnd);
-void Calculate();
+bool Calculate();
 void UpdateResults();
+void GetResults();
 
 void UpdateTextboxSingleIEEE754();
 void UpdateTextboxDoubleIEEE754();
