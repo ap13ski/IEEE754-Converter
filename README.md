@@ -7,4 +7,4 @@ Compilers: [MinGW-W64 v.12.0.0](https://www.mingw-w64.org) (64-bit), [TDM-GCC 9.
 
 Tested on MS Windows: XP (32-bit only), 7, 10, 11.
 
-![Screenshot](conv.png)
+![image](screenshot.png)
